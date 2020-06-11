@@ -1,5 +1,5 @@
 # Continuous Color Grid Count Challenge
-In this challenge, contestors need to write a program to analyse a given color grid, and find out the largest continuous color block in the given grid. Here is an example of the color grid problem.
+In this challenge, contestants need to write a program to analyse a given color grid, and find out the largest continuous color block in the given grid. Here is an example of the color grid problem.
 
 <img src="./grid-color-challenge.png" />
 
