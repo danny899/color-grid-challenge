@@ -1,6 +1,6 @@
 const colors = Array('B', 'R', 'G', 'Y', 'S', 'P');
-const ROW_NUM = 100
-const COL_NUM = 100
+const ROW_NUM = 30
+const COL_NUM = 20
 
 function createGame(col, row) {
     return Array(col*row).fill()
@@ -126,6 +126,21 @@ function printColorBoard(nodes) {
     )
 }
 
+function printResult(nodes, block) {
+    // var line = Array(COL_NUM).fill().map((item, index) => (`${index}`)).join(", ")
+    var line = ""
+    nodes.forEach(
+        n => {
+            if(n.x == 0) {
+                console.log(line)
+                line = ""
+            } 
+            // line += ((n.x) / 9 > 1 ? " " : "") + colors[n.colorId] + (n.x % COL_NUM == (COL_NUM-1) ? " " : ", ")
+            line += (block.includes(n.id) ? "=" : colors[n.colorId]) + (n.x % COL_NUM == (COL_NUM-1) ? " " : ", ")
+        }
+    )
+}
+
 var game = createGame(COL_NUM, ROW_NUM)
 printColorBoard(game)
   
@@ -135,7 +150,9 @@ console.timeEnd("collect neighbour nodes")
 
 console.log(" ========================== START Find Largest Blocks ========================== ")
 console.time("findLargestContinousBlock")
-console.log(findLargestContinousBlock(nodesWithNeighbours))
+var largestBlock = findLargestContinousBlock(nodesWithNeighbours)
+console.log(largestBlock)
 console.timeEnd("findLargestContinousBlock")
 console.log(" ========================== END Find Largest Blocks ========================== ")
 
+printResult(game, largestBlock.block)
